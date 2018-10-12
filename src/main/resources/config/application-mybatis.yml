@@ -1,0 +1,16 @@
+### Mybatis 配置
+mybatis:
+  mapper-locations: classpath:config/mapper/**Mapper.xml
+#  configuration:
+#    log-impl:  STDOUT_LOGGING
+spring: 
+  mvc: 
+    view: 
+      prefix: /templates/
+      suffix: .ftl
+##pagehelper分页插件配置
+pagehelper: 
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params-count: countSql
