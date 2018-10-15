@@ -3,6 +3,7 @@ package com.answern.cmqConsumer.base;
 import com.answern.cmqConsumer.config.quene.BaseCmqQueueConsumer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
@@ -13,7 +14,6 @@ import org.springframework.util.StringUtils;
  * 创建时间:[2018/10/12 17:27]  <br/>
  * 版本:[v1.0]   <br/>
  */
-@Component
 public class CmqQueueConsumerImp extends BaseCmqQueueConsumer {
 
     private Logger logger = LoggerFactory.getLogger(CmqQueueConsumerImp.class);
@@ -32,10 +32,12 @@ public class CmqQueueConsumerImp extends BaseCmqQueueConsumer {
      */
     @Override
     public boolean consume(String msgBody) {
+        WrightFile wrightFile = new WrightFile();
         if(StringUtils.isEmpty(msgBody)) {
             logger.info("消费消息内容为空");
         }
         logger.info(msgBody);
+        wrightFile.printFile(msgBody);
         return true;
     }
 }
